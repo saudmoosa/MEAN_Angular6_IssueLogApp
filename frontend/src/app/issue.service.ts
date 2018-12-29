@@ -11,17 +11,16 @@ import { MatTableModule } from '@angular/material';
 })
 export class IssueService {
 
-//uri = 'http://localhost:4000/';                   //For dev build
-uri = '';
+uri = 'http://localhost:4000/';
 
   constructor(private http: HttpClient) { }
 
   getIssues() {
-    return this.http.get(`${this.uri}issues`);
+    return this.http.get(`${this.uri}/issues`);
   };
 
   getIssueById(id) {
-    return this.http.get(`${this.uri}issues/${id}`);
+    return this.http.get(`${this.uri}/issues/${id}`);
   };
 
   addIssue(title, responsible, description, severity) {
@@ -31,7 +30,7 @@ uri = '';
       description: description,
       severity: severity
     };
-    return this.http.post(`${this.uri}issues/add`, issue);
+    return this.http.post(`${this.uri}/issues/add`, issue);
   };
 
   updateIssue(id, title, responsible, description, severity, status) {
@@ -42,10 +41,10 @@ uri = '';
       severity: severity,
       status: status
     };
-    return this.http.post(`${this.uri}issues/update/${id}`, issue);
+    return this.http.post(`${this.uri}/issues/update/${id}`, issue);
   };
 
   deleteIssue(id) {
-    return this.http.get(`${this.uri}issues/delete/${id}`);
+    return this.http.get(`${this.uri}/issues/delete/${id}`);
   };
 }

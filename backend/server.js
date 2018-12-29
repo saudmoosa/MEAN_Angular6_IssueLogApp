@@ -7,8 +7,8 @@ import Issue from './models/issue';
 
 const app = express();
 const router = express.Router();
-//const port = 4000;                    //For dev build
-const port =  process.env.PORT || 8080;
+const port = 4000;                    //For dev build
+//const port =  process.env.PORT || 8080;                    //For prod build
 
 app.use(cors());
 app.use(bodyParser.json());
