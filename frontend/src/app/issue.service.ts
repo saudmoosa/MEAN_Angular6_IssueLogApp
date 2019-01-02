@@ -11,7 +11,8 @@ import { MatTableModule } from '@angular/material';
 })
 export class IssueService {
 
-uri = 'http://localhost:4000';
+//uri = 'http://localhost:4000';    //Local
+uri = 'http://localhost:8080';  //Local Prod
 
   constructor(private http: HttpClient) { }
 

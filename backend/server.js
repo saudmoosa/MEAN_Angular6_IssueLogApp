@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
@@ -7,8 +8,8 @@ import Issue from './models/issue';
 
 const app = express();
 const router = express.Router();
-const port = 4000;                    //For dev build
-//const port =  process.env.PORT || 8080;                    //For prod build
+//const port = 4000;                    //For dev build
+const port =  process.env.PORT || 8080;                    //For prod build
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -22,6 +23,10 @@ connection.once('open', () => {
     console.log('MongoDB connection established successfully');
 });
 
+//Set Static Folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+//Routes
 router.route('/issues').get((req, res) => {
     Issue.find((err, issues) => {
         if (err)
